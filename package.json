@@ -1,15 +1,20 @@
 {
   "name": "@clar/mykey",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clar/mykeyjs.git"
+  },
+  "author": "clar",
   "license": "ISC",
   "dependencies": {
     "eosjs": "beta",
     "node-fetch": "^2.3.0"
-  }
+  },
+  "homepage": "https://github.com/clar/mykeyjs"
 }
