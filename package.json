@@ -1,0 +1,15 @@
+{
+  "name": "@clar/mykey",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eosjs": "beta",
+    "node-fetch": "^2.3.0"
+  }
+}
