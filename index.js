@@ -1,12 +1,14 @@
-const fetch = require('node-fetch');  
-const {JsonRpc} = require('eosjs');
+const fetch = require('node-fetch');
+const { TextDecoder, TextEncoder } = require('text-encoding'); 
+const {Api, JsonRpc, Serialize} = require('eosjs');
 
-function Mykey(rpc){
-
-    if(!rpc)
-        rpc = new JsonRpc('https://public.eosinfra.io', { fetch });
+let Mykey = function (rpc){
+    if(!rpc) rpc = new JsonRpc('https://public.eosinfra.io', { fetch });      
     this.eosJsonRpc = rpc
-
+    this.api = new Api({ rpc: rpc, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+    this.defaultMykeyMgr = "mykeymanager"
+    this.defaultMykeyLogic = "mykeylogica1"
+    
     this.getMykeyMgr = async (name) =>  {
         const { permissions } = await this.eosJsonRpc.get_account(name)
         if (!permissions) {
@@ -45,6 +47,35 @@ function Mykey(rpc){
 
         return keydata.rows[0].key.pubkey;
     }   
+
+    this.getMykeyActionData = async(txid) => {
+        let tx = await this.eosJsonRpc.history_get_transaction(txid)
+        let first_action = tx.trx.trx.actions[0]
+        if(first_action.account === this.defaultMykeyMgr && first_action.name === "sendaction"){
+            return first_action.hex_data
+        }else {
+            throw new Error(`action data of tx: ${txid} is not found.`);
+        }
+    }
+
+    this.deserializeMykeyActionData = async(action_data) => {
+        let encoder = new TextEncoder()
+        let decoder = new TextDecoder()
+        let send_action = "sendaction"
+        let mgr_contract = await this.api.getContract(this.defaultMykeyMgr)
+        let logic_contract = await this.api.getContract(this.defaultMykeyLogic)
+        let actdata_1 = await Serialize.deserializeActionData(mgr_contract, this.defaultMykeyMgr, send_action, action_data, encoder, decoder)
+
+        if(actdata_1.act === "sendexternal") {
+            let actdata_2 = await Serialize.deserializeActionData(logic_contract, this.defaultMykeyLogic, actdata_1.act, actdata_1.bin_data, encoder, decoder)
+            let actdata_3 = await Serialize.deserializeActionData(mgr_contract, this.defaultMykeyMgr, "forward", actdata_2.data, encoder, decoder)
+            // let target_contract = await this.api.getContract(actdata_3.target_contract)
+            // let actdata_4 = await Serialize.deserializeActionData(target_contract, actdata_3.target_contract, actdata_3.act, actdata_3.data, encoder, decoder)
+            return actdata_3
+        }else {
+            throw new Error(`only support sendexternal deserialize`);            
+        }
+    }
 };
 
 module.exports = Mykey
