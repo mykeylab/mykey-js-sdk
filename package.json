@@ -1,6 +1,6 @@
 {
-  "name": "@clar/mykey",
-  "version": "1.0.6",
+  "name": "@mykeylab/mykey-js-sdk",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/clar/mykeyjs.git"
+    "url": "https://github.com/mykeylab/mykey-js-sdk.git"
   },
-  "author": "clar",
+  "author": "mykeylab",
   "license": "ISC",
   "dependencies": {
     "eosjs": "beta",
     "node-fetch": "^2.3.0"
   },
-  "homepage": "https://github.com/clar/mykeyjs"
+  "homepage": "https://github.com/mykeylab/mykey-js-sdk"
 }
