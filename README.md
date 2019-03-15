@@ -1,6 +1,6 @@
 # mykeyjs-js-sdk
 
-It helps 3rd dapps easy to compatiable with MYKEY. 
+It helps dapps easy to compatiable with MYKEY. 
 
 ## What are the differences on MYKEY?
 
