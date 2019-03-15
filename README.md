@@ -1,9 +1,20 @@
-# mykeyjs
+# mykeyjs-js-sdk
+
+It helps 3rd dapps easy to compatiable with MYKEY. 
+
+## What are the differences on MYKEY?
+
+Please refer to this document:
+[MYKEY on EOS](https://github.com/mykeylab/Documentation/blob/master/English/MYKEY%20on%20EOSIO.md)
 
 
-## Basic Usage
+## How to install
 
+```
 npm i @mykeylab/mykey-js-sdk
+```
+
+## Basic usage
 
 ```js
 
