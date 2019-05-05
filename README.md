@@ -1,5 +1,4 @@
-# mykeyjs-js-sdk ![npm](https://img.shields.io/npm/dw/eosjs.svg)
-
+# mykeyjs-js-sdk
 It helps dapps easy to compatiable with MYKEY.
 
 ## What are the differences on MYKEY?
