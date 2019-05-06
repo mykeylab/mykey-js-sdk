@@ -18,3 +18,7 @@ npm i @mykeylab/mykey-js-sdk
 ```
 npm run test
 ```
+
+## Api docs
+
+https://mykeylab.github.io/mykey-js-sdk/@mykeylab/mykey-js-sdk/0.2.0/index.html
