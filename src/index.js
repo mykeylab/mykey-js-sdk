@@ -4,7 +4,7 @@ import {Api, JsonRpc, Serialize} from 'eosjs';
 
 const defaultMykeyMgr = 'mykeymanager';
 const defaultMykeyLogic = 'mykeylogica1';
-const defaultEndpoint = 'https://public.eosinfra.io';
+const defaultEndpoint = 'https://eos.greymass.com';
 
 /**
  * Class Mykey, for developers easy access mykey account details.
