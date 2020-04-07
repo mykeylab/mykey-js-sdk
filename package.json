@@ -15,9 +15,14 @@
   "author": "mykeylab",
   "license": "Apache",
   "dependencies": {
+    "acorn": "^7.1.1",
     "eosjs": "beta",
     "es6-promise": "^4.2.6",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "kind-of": "^6.0.3",
+    "minimist": "^1.2.5",
+    "serialize-javascript": "^3.0.0",
+    "set-value": "^3.0.2"
   },
   "homepage": "https://github.com/mykeylab/mykey-js-sdk",
   "devDependencies": {
